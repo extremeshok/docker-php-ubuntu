@@ -513,9 +513,9 @@ if [ "$XS_REDIS_SESSIONS" == "yes" ] || [ "$XS_REDIS_SESSIONS" == "true" ] || [ 
 fi
 
 # Generate a crontab, as busybox only allows for a single cron, all cron will be run as the nobody user
-if [ ! -f "/etc/cron.d/*" ] ; then
-  echo "Generating single crontab from cronjobs in /etc/cron.d/"
-  cat /etc/cron.d/* | crontab -u nobody -
-fi
+# if [ ! -f "/etc/cron.d/*" ] ; then
+#   echo "Generating single crontab from cronjobs in /etc/cron.d/"
+#   cat /etc/cron.d/* | crontab -u nobody -
+# fi
 
 echo "Starting PHP"
