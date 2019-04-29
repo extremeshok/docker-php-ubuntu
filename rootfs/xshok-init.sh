@@ -502,7 +502,7 @@ fi
 
 if [ "$XS_CHOWN" == "yes" ] || [ "$XS_CHOWN" == "true" ] || [ "$XS_CHOWN" == "on" ] || [ "$XS_CHOWN" == "1" ] ; then
   echo "Setting ownership of /var/www/html"
-  chown -f -R nobody:nobody /var/www/html
+  chown -f -R nobody:nogroup /var/www/html
 fi
 
 if [ "$XS_REDIS_SESSIONS" == "yes" ] || [ "$XS_REDIS_SESSIONS" == "true" ] || [ "$XS_REDIS_SESSIONS" == "on" ] || [ "$XS_REDIS_SESSIONS" == "1" ] ; then
