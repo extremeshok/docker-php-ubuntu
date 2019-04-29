@@ -2,7 +2,7 @@ FROM extremeshok/baseimage-ubuntu AS BUILD
 LABEL mantainer="Adrian Kriel <admin@extremeshok.com>" vendor="eXtremeSHOK.com"
 
 RUN echo "**** Install packages ****" \
-  && apt-install bash ca-certificates libpcre++ libfcgi-bin supervisor curl unzip imagemagick jpegoptim pngquant optipng gifsicle sqlite less mariadb-client openssl
+  && apt-install bash ca-certificates libpcre++ libfcgi-bin supervisor curl unzip imagemagick jpegoptim pngquant optipng gifsicle sqlite less mariadb-client openssl netcat
 
 # notice the  is required to avoid getting default php packages from alpine instead.
 RUN echo  "**** Install php and some extensions ****" \
