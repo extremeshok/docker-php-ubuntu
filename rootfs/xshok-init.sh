@@ -492,7 +492,7 @@ EOF
 fi
 
 echo "#### Checking PHP configs ####"
-/usr/sbin/php-fpm7 -t
+/usr/sbin/php-fpm -t
 result=$?
 if [ "$result" != "0" ] ; then
   echo "ERROR: CONFIG DAMAGED, sleeping ......"
