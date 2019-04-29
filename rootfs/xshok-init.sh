@@ -79,7 +79,7 @@ if [ "$XS_EXTRA_EXTENSIONS" != "" ] ; then
 fi
 
 ## Configure Remote SMTP config
-if [ -d "/etc/" ] && [ -w "/etc/" ] && [ -d "/etc/php/conf.d/" ] && [ -w "/etc/php/conf.d/" ] ; then
+if [ -d "/etc/" ] && [ -w "/etc/" ] && [ -d "/etc/php/7.2/fpm/conf.d/" ] && [ -w "/etc/php/7.2/fpm/conf.d/" ] ; then
 
   if [ "$XS_SMTP_HOST" != "" ] && [ "$XS_SMTP_USER" != "" ] && [ "$XS_SMTP_PASSWORD" != "" ] ; then
     echo "Installing remote smtp (msmtp)"
@@ -101,7 +101,7 @@ password ${XS_SMTP_PASSWORD}
 account default : remote
 
 EOF
-    echo 'sendmail_path = "/usr/bin/msmtp -C /etc/msmtprc -t"' > /etc/php/conf.d/zz-msmtp.ini
+    echo 'sendmail_path = "/usr/bin/msmtp -C /etc/msmtprc -t"' > /etc/php/7.2/fpm/conf.d/zz-msmtp.ini
 
     if [ -f "/usr/sbin/sendmail" ] ; then
       mv -f /usr/sbin/sendmail /usr/sbin/sendmail.disabled
@@ -109,7 +109,7 @@ EOF
     ln -s /usr/bin/msmtp /usr/sbin/sendmail
   else
     rm -f /etc/msmtprc
-    rm -f /etc/php/conf.d/zz-msmtp.ini
+    rm -f /etc/php/7.2/fpm/conf.d/zz-msmtp.ini
     if [ -f "/usr/sbin/sendmail.disabled" ] ; then
       mv -f /usr/sbin/sendmail.disabled /usr/sbin/sendmail
     fi
@@ -456,39 +456,39 @@ if [ -d "/etc/php/php-fpm-conf.d/" ] && [ -w "/etc/php/php-fpm-conf.d/" ] ; then
 
   if [ "$XS_IONCUBE" == "yes" ] || [ "$XS_IONCUBE" == "true" ] || [ "$XS_IONCUBE" == "on" ] || [ "$XS_IONCUBE" == "1" ] ; then
     echo "Enabling ioncube"
-    echo "zend_extension=ioncube_loader_lin_$(php -n -v 2>/dev/null | head -n 1 | cut -d" " -f2 | cut -d"." -f1,2 | xargs).so" > /etc/php/conf.d/000000_ioncube.ini
-  elif [ -f "/etc/php/conf.d/000000_ioncube.ini" ] ; then
-    rm -f /etc/php/conf.d/000000_ioncube.ini
+    echo "zend_extension=ioncube_loader_lin_$(php -n -v 2>/dev/null | head -n 1 | cut -d" " -f2 | cut -d"." -f1,2 | xargs).so" > /etc/php/7.2/fpm/conf.d/000000_ioncube.ini
+  elif [ -f "/etc/php/7.2/fpm/conf.d/000000_ioncube.ini" ] ; then
+    rm -f /etc/php/7.2/fpm/conf.d/000000_ioncube.ini
   fi
 
   if [ "$XS_REDIS_SESSIONS" == "yes" ] || [ "$XS_REDIS_SESSIONS" == "true" ] || [ "$XS_REDIS_SESSIONS" == "on" ] || [ "$XS_REDIS_SESSIONS" == "1" ] ; then
     echo "Enabling redis sessions"
-    cat << EOF > /etc/php/conf.d/xs_redis.ini
+    cat << EOF > /etc/php/7.2/fpm/conf.d/xs_redis.ini
 session.save_handler = redis
 session.save_path = "tcp://${XS_REDIS_HOST}:${XS_REDIS_PORT}"
 EOF
-  elif [ -f "/etc/php/conf.d/xs_redis.ini" ] ; then
-    rm -f /etc/php/conf.d/xs_redis.ini
+  elif [ -f "/etc/php/7.2/fpm/conf.d/xs_redis.ini" ] ; then
+    rm -f /etc/php/7.2/fpm/conf.d/xs_redis.ini
   fi
 
-  echo "date.timezone = ${XS_TIMEZONE}" > /etc/php/conf.d/xs_timezone.ini
+  echo "date.timezone = ${XS_TIMEZONE}" > /etc/php/7.2/fpm/conf.d/xs_timezone.ini
 
-  cat << EOF > /etc/php/conf.d/xs_max_time.ini
+  cat << EOF > /etc/php/7.2/fpm/conf.d/xs_max_time.ini
   max_execution_time = ${XS_MAX_TIME}
   max_input_time = ${XS_MAX_TIME}
 EOF
 
-  cat << EOF > /etc/php/conf.d/xs_max_upload_size.ini
+  cat << EOF > /etc/php/7.2/fpm/conf.d/xs_max_upload_size.ini
   upload_max_filesize = ${XS_MAX_UPLOAD_SIZE}M
   post_max_size = ${XS_MAX_UPLOAD_SIZE}M
 EOF
 
-  cat << EOF > /etc/php/conf.d/xs_max_time.ini
+  cat << EOF > /etc/php/7.2/fpm/conf.d/xs_max_time.ini
   max_execution_time = ${XS_MAX_TIME}
   max_input_time = ${XS_MAX_TIME}
 EOF
 
-  echo "memory_limit = ${XS_MEMORY_LIMIT}M" > /etc/php/conf.d/xs_memory_limit.ini
+  echo "memory_limit = ${XS_MEMORY_LIMIT}M" > /etc/php/7.2/fpm/conf.d/xs_memory_limit.ini
 fi
 
 echo "#### Checking PHP configs ####"
