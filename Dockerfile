@@ -54,7 +54,9 @@ RUN echo "**** Update ca-certificates ****" \
 # Make sure files/folders needed by the processes are accessable when they run under the nobody user
 RUN echo "**** Fix permissions ****" \
   && mkdir -p /var/www/html \
-  && chown -R nobody:nogroup /var/www/html
+  && mkdir -p /run/php \
+  && chown -R nobody:nogroup /var/www/html \
+  && chown -R nobody:nogroup /run/php
 
 WORKDIR /var/www/html
 
