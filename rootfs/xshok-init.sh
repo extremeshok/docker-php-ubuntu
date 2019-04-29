@@ -14,7 +14,7 @@ XS_TIMEZONE=${PHP_TIMEZONE:-UTC}
 XS_DISABLE_FUNCTIONS=${PHP_DISABLE_FUNCTIONS:-shell_exec}
 XS_CHOWN=${PHP_CHOWN:-yes}
 
-XS_IONCUBE=${PHP_IONCUBE:-yes}
+XS_IONCUBE=${PHP_IONCUBE:-no}
 
 XS_SMTP_HOST=${PHP_SMTP_HOST:-}
 XS_SMTP_PORT=${PHP_SMTP_PORT:-587}
@@ -450,7 +450,7 @@ if [ -d "/etc/php/conf.d" ] && [ -w "/etc/php/conf.d" ] ; then
   fi
 fi
 
-if [ -d "/etc/php/php-fpm-conf.d/" ] && [ -w "/etc/php/php-fpm-conf.d/" ] ; then
+if [ -d "/etc/php/7.2/fpm/conf.d/" ] && [ -w "/etc/php/7.2/fpm/conf.d/" ] ; then
 
   if [ "$XS_IONCUBE" == "yes" ] || [ "$XS_IONCUBE" == "true" ] || [ "$XS_IONCUBE" == "on" ] || [ "$XS_IONCUBE" == "1" ] ; then
     echo "Enabling ioncube"
