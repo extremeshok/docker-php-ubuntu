@@ -58,6 +58,10 @@ RUN echo "**** Fix permissions ****" \
   && chown -R nobody:nogroup /var/www/html \
   && chown -R nobody:nogroup /run/php
 
+RUN echo "**** Link php cli to fpm config ****" \
+  && rm -rf /etc/php/7.2/cli \
+  &&  ln -s /etc/php/7.2/fpm /etc/php/7.2/cli
+
 WORKDIR /var/www/html
 
 EXPOSE 9000
