@@ -505,7 +505,8 @@ fi
 
 if [ "$XS_REDIS_SESSIONS" == "yes" ] || [ "$XS_REDIS_SESSIONS" == "true" ] || [ "$XS_REDIS_SESSIONS" == "on" ] || [ "$XS_REDIS_SESSIONS" == "1" ] ; then
   # wait for redis to start
-  while ! echo PING | nc ${XS_REDIS_HOST} ${XS_REDIS_PORT} ; do
+  echo "waiting for redis ${XS_REDIS_HOST}:${XS_REDIS_PORT}"
+  while ! echo PING | nc -q 10  ${XS_REDIS_HOST} ${XS_REDIS_PORT} ; do
     echo "waiting for redis ${XS_REDIS_HOST}:${XS_REDIS_PORT}"
     sleep 5s
   done
