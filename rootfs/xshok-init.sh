@@ -69,12 +69,10 @@ fi
 ## Install extra php-extensions
 if [ "$XS_EXTRA_EXTENSIONS" != "" ] ; then
   for extension in ${XS_EXTRA_EXTENSIONS//,/ } ; do
-    extension="${extension#php7-}"
     extension="${extension##\"}"
-    extension=${extension#php-}
     extension=${extension%@php}
     echo "Installing php extension: ${extension}"
-    apk-install "php-${extension}@php"
+    apt-install "${extension}"
   done
 fi
 
@@ -492,7 +490,7 @@ EOF
 fi
 
 echo "#### Checking PHP configs ####"
-/usr/sbin/php-fpm7.2 -c /etc/php7 -t
+/usr/sbin/php-fpm7.2 -t
 result=$?
 if [ "$result" != "0" ] ; then
   echo "ERROR: CONFIG DAMAGED, sleeping ......"
