@@ -454,7 +454,7 @@ if [ -d "/etc/php/7.2/fpm/conf.d/" ] && [ -w "/etc/php/7.2/fpm/conf.d/" ] ; then
 
   if [ "$XS_IONCUBE" == "yes" ] || [ "$XS_IONCUBE" == "true" ] || [ "$XS_IONCUBE" == "on" ] || [ "$XS_IONCUBE" == "1" ] ; then
     echo "Enabling ioncube"
-    echo "zend_extension=ioncube_loader_lin_$(php -n -v 2>/dev/null | head -n 1 | cut -d" " -f2 | cut -d"." -f1,2 | xargs).so" > /etc/php/7.2/fpm/conf.d/000000_ioncube.ini
+    echo "zend_extension=/usr/lib/php7.2/modules/ioncube_loader_lin_$(php -n -v 2>/dev/null | head -n 1 | cut -d" " -f2 | cut -d"." -f1,2 | xargs).so" > /etc/php/7.2/fpm/conf.d/000000_ioncube.ini
   elif [ -f "/etc/php/7.2/fpm/conf.d/000000_ioncube.ini" ] ; then
     rm -f /etc/php/7.2/fpm/conf.d/000000_ioncube.ini
   fi
