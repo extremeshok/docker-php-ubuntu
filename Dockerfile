@@ -30,7 +30,7 @@ RUN echo "**** Install IONCUBE ****" \
   && wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.zip -O /tmp/ioncube/ioncube.zip \
   && unzip -oq ioncube.zip \
   && mkdir -p /usr/lib/php7.2/modules/ \
-  && cp -rf /tmp/ioncube/ioncube/oncube_loader_lin_7.2.so /usr/lib/php7.2/modules/ \
+  && cp -rf /tmp/ioncube/ioncube/ioncube_loader_lin_7.2.so /usr/lib/php7.2/modules/ \
   && chmod +x /usr/lib/php7.2/modules/ioncube_* \
   && rm -rf /tmp/ioncube
 
