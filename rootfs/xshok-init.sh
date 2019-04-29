@@ -516,3 +516,5 @@ if [ ! -f "/etc/cron.d/*" ] ; then
   echo "Generating single crontab from cronjobs in /etc/cron.d/"
   cat /etc/cron.d/* | crontab -u nobody -
 fi
+
+echo "Starting PHP"

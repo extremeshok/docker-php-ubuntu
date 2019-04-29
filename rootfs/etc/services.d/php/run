@@ -10,4 +10,4 @@ done
 # -O, --force-stderr  force output to stderr in nodaemonize even if stderr is not a TTY
 # -c <path>|<file>  Look for php.ini file in this directory
 # -g, --pid <file>  Specify the PID file location.
-/bin/s6-nice -I -n -10 /usr/sbin/php-fpm7.2 -F -O -c /etc/php7 -g /var/run/php-fpm7.pid
+/bin/s6-nice -I -n -10 /usr/sbin/php-fpm7.2 -F -O -g /var/run/php-fpm7.pid
