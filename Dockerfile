@@ -1,4 +1,4 @@
-FROM extremeshok/baseimage-ubuntu:18.04 AS BUILD
+FROM extremeshok/baseimage-ubuntu:latest AS BUILD
 LABEL mantainer="Adrian Kriel <admin@extremeshok.com>" vendor="eXtremeSHOK.com"
 
 RUN echo "**** Install packages ****" \
@@ -6,32 +6,32 @@ RUN echo "**** Install packages ****" \
 
 # notice the  is required to avoid getting default php packages from alpine instead.
 RUN echo  "**** Install php and some extensions ****" \
-  && apt-install php7.2 php7.2-fpm php7.2-common\
+  && apt-install php7.4 php7.4-fpm php7.4-common\
   php-imagick \
   #php-libsodium \
   php-pear \
   php-redis \
-  php7.2-bcmath \
-  php7.2-curl \
-  php7.2-gd \
-  php7.2-imap \
-  php7.2-intl \
-  php7.2-json \
-  php7.2-mbstring \
-  php7.2-mysql \
-  php7.2-opcache \
-  php7.2-sqlite3 \
-  php7.2-xml \
-  php7.2-zip
+  php7.4-bcmath \
+  php7.4-curl \
+  php7.4-gd \
+  php7.4-imap \
+  php7.4-intl \
+  php7.4-json \
+  php7.4-mbstring \
+  php7.4-mysql \
+  php7.4-opcache \
+  php7.4-sqlite3 \
+  php7.4-xml \
+  php7.4-zip
 
 RUN echo "**** Install IONCUBE ****" \
   && mkdir -p /tmp/ioncube \
   && cd /tmp/ioncube \
   && wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.zip -O /tmp/ioncube/ioncube.zip \
   && unzip -oq ioncube.zip \
-  && mkdir -p /usr/lib/php7.2/modules/ \
-  && cp -rf /tmp/ioncube/ioncube/ioncube_loader_lin_7.2.so /usr/lib/php7.2/modules/ \
-  && chmod +x /usr/lib/php7.2/modules/ioncube_* \
+  && mkdir -p /usr/lib/php7.4/modules/ \
+  && cp -rf /tmp/ioncube/ioncube/ioncube_loader_lin_7.4.so /usr/lib/php7.4/modules/ \
+  && chmod +x /usr/lib/php7.4/modules/ioncube_* \
   && rm -rf /tmp/ioncube
 
 RUN echo "**** Install composer ****" \
@@ -59,8 +59,8 @@ RUN echo "**** Fix permissions ****" \
   && chown -R nobody:nogroup /run/php
 
 RUN echo "**** Link php cli to fpm config ****" \
-  && rm -rf /etc/php/7.2/cli \
-  &&  ln -s /etc/php/7.2/fpm /etc/php/7.2/cli
+  && rm -rf /etc/php/7.4/cli \
+  &&  ln -s /etc/php/7.4/fpm /etc/php/7.4/cli
 
 WORKDIR /var/www/html
 

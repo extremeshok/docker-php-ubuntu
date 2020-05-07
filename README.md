@@ -1,11 +1,11 @@
-# eXtremeSHOK.com Docker PHP-FPM 7.2 on Ubuntu LTS 18.04
+# eXtremeSHOK.com Docker PHP-FPM 7.4 on Ubuntu LTS 20.04
 
 https://hub.docker.com/r/extremeshok/php-ubuntu
 
 # Features
-* Ubuntu LTS 18.04 with S6
+* Ubuntu LTS 20.04 with S6
 * cron (/etc/cron.d) enabled for scheduling tasks, run as user nobody
-* PHP 7.2 from Ubuntu Repository
+* PHP 7.4 from Ubuntu Repository
 * IONICE set to -10
 * Zend opcache enabled
 * Low memory usage (~30MB)
@@ -22,7 +22,7 @@ https://hub.docker.com/r/extremeshok/php-ubuntu
 * Optional: install wp-cli
 * Optional: set ownership of /var/www/html to nobody:nobody
 * Optional: Install wordpress, selected plugins and optimise it
-* Optional: Ioncube
+* Optional: Ioncube **not available**
 # PHP-Redis-sessions
 * PHP_REDIS_SESSIONS=yes
 * PHP_REDIS_HOST=redis
@@ -39,7 +39,7 @@ https://github.com/codecasts/php-alpine#available-packages
 * PHP_MEMORY_LIMIT=256 (in mbyte)
 * PHP_DISABLE_FUNCTIONS=shell_exec (set to false to disable, can use a comma separated list)
 * PHP_CHOWN=true (set to false to disable)
-* PHP_IONCUBE=true (set to false to disable)
+* PHP_IONCUBE=true (set to false to disable) **not available**
 
 # EXTERNAL SMTP
 * PHP_SMTP_HOST=
@@ -113,7 +113,7 @@ https://github.com/codecasts/php-alpine#available-packages
 * composer
 * gifsicle
 * imagemagick
-* Ioncube
+* Ioncube **not available**
 * jpegoptim
 * optipng
 * pcre
