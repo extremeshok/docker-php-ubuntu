@@ -1,6 +1,9 @@
-# eXtremeSHOK.com Docker PHP-FPM 7.2 on Ubuntu LTS 18.04
+# eXtremeSHOK.com Docker PHP-FPM 7.2 on Ubuntu 18.04
 
-* Ubuntu LTS 18.04 with S6
+https://hub.docker.com/r/extremeshok/php-ubuntu
+
+# Features
+* Ubuntu 18.04 with S6
 * cron (/etc/cron.d) enabled for scheduling tasks, run as user nobody
 * PHP 7.2 from Ubuntu Repository
 * IONICE set to -10
