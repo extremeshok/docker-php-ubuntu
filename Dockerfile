@@ -1,8 +1,8 @@
-FROM extremeshok/baseimage-ubuntu:latest AS BUILD
+FROM extremeshok/baseimage-ubuntu:20.04 AS BUILD
 LABEL mantainer="Adrian Kriel <admin@extremeshok.com>" vendor="eXtremeSHOK.com"
 
 RUN echo "**** Install packages ****" \
-  && apt-install bash ca-certificates libpcre++ libfcgi-bin supervisor curl unzip imagemagick jpegoptim pngquant optipng gifsicle sqlite less mariadb-client openssl netcat
+  && apt-install bash fontconfig ca-certificates libpcre++ libfcgi-bin supervisor curl unzip imagemagick jpegoptim pngquant optipng gifsicle sqlite less mariadb-client openssl netcat
 
 # notice the  is required to avoid getting default php packages from alpine instead.
 RUN echo  "**** Install php and some extensions ****" \
@@ -24,15 +24,15 @@ RUN echo  "**** Install php and some extensions ****" \
   php7.4-xml \
   php7.4-zip
 
-RUN echo "**** Install IONCUBE ****" \
-  && mkdir -p /tmp/ioncube \
-  && cd /tmp/ioncube \
-  && wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.zip -O /tmp/ioncube/ioncube.zip \
-  && unzip -oq ioncube.zip \
-  && mkdir -p /usr/lib/php7.4/modules/ \
-  && cp -rf /tmp/ioncube/ioncube/ioncube_loader_lin_7.4.so /usr/lib/php7.4/modules/ \
-  && chmod +x /usr/lib/php7.4/modules/ioncube_* \
-  && rm -rf /tmp/ioncube
+# RUN echo "**** Install IONCUBE ****" \
+#   && mkdir -p /tmp/ioncube \
+#   && cd /tmp/ioncube \
+#   && wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.zip -O /tmp/ioncube/ioncube.zip \
+#   && unzip -oq ioncube.zip \
+#   && mkdir -p /usr/lib/php7.4/modules/ \
+#   && cp -rf /tmp/ioncube/ioncube/ioncube_loader_lin_7.4.so /usr/lib/php7.4/modules/ \
+#   && chmod +x /usr/lib/php7.4/modules/ioncube_* \
+#   && rm -rf /tmp/ioncube
 
 RUN echo "**** Install composer ****" \
   && mkdir -p /tmp/composer \
